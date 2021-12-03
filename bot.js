@@ -37,24 +37,23 @@ bot.hears('/bot', async (ctx) => {
             score_dealer = data.items.results[i].results.card_dealer.suit
             score_player = data.items.results[i].results.card_player.suit
 
-            if (score_dealer != 'diamonds' && score_player != 'diamonds' && score_dealer != 'hearts' && score_player != 'hearts')
+            if ((score_dealer == 'diamonds' || score_dealer == 'hearts')&&(score_player == 'diamonds' || score_player == 'hearts'))
                 mast1 = mast1 + 1;
 
         }
 
-        if (mast1 == 4) { ctx.reply('Красных не было 8 карт') }
+        if (mast1 == 4) { ctx.reply('Чёрных не было 8 карт') }
 
 
         for (let i = 0; i < 4; i++) {
             score_dealer = data.items.results[i].results.card_dealer.suit
             score_player = data.items.results[i].results.card_player.suit
-
-            if (score_dealer != 'clubs' && score_player != 'clubs' && score_dealer != 'spades' && score_player != 'spades')
-                mast1 = mast1 + 1;
+            if ((score_dealer == 'clubs' || score_dealer == 'spades')&&(score_player == 'clubs' || score_player == 'spades'))
+                mast2 = mast2 + 1;
 
         }
 
-        if (mast1 == 4) { ctx.reply('Чёоных не было 8 карт') }
+        if (mast2 == 4) { ctx.reply('Красных не было 8 карт') }
 
 
 
@@ -63,22 +62,22 @@ bot.hears('/bot', async (ctx) => {
             score_dealer = data.items.results[i].results.card_dealer.suit
             score_player = data.items.results[i].results.card_player.suit
 
-            if (score_player != 'diamonds' && score_player != 'hearts')
+            if (score_player == 'diamonds' || score_player == 'hearts')
                 mastvertDil1 = mastvertDil1 + 1;
 
         }
 
-        if (mastvertDil1 == 4) { ctx.reply('Нет 4 красных у игрока (вертикаль)') }
+        if (mastvertDil1 == 4) { ctx.reply('Нет 4 чёрных у игрока (вертикаль)') }
 
         for (let i = 0; i < 4; i++) {
             score_dealer = data.items.results[i].results.card_dealer.suit
             score_player = data.items.results[i].results.card_player.suit
 
-            if (score_player !== 'clubs' && score_player !== 'spades')
+            if (score_player === 'clubs' || score_player === 'spades')
                 mastvertDil2 = mastvertDil2 + 1;
 
         }
-        if (mastvertDil2 == 4) { ctx.reply('Нет 4 чёрных игрока (вертикаль)') }
+        if (mastvertDil2 == 4) { ctx.reply('Нет 4 красных игрока (вертикаль)') }
 
 
 
@@ -88,22 +87,22 @@ bot.hears('/bot', async (ctx) => {
             score_dealer = data.items.results[i].results.card_dealer.suit
             score_player = data.items.results[i].results.card_player.suit
 
-            if (score_dealer != 'diamonds' && score_dealer != 'hearts')
-                mastvertDil1 = mastvertDil1 + 1;
+            if (score_dealer === 'diamonds' || score_dealer === 'hearts')
+                mastvertDil3 = mastvertDil3 + 1;
 
         }
 
-        if (mastvertDil1 == 4) { ctx.reply('Нет 4 красных у дилера (вертикаль)') }
+        if (mastvertDil3 == 4) { ctx.reply('Нет 4 чёрных у дилера (вертикаль)') }
 
         for (let i = 0; i < 4; i++) {
             score_dealer = data.items.results[i].results.card_dealer.suit
             score_player = data.items.results[i].results.card_player.suit
 
-            if (score_dealer !== 'clubs' && score_dealer !== 'spades')
-                mastvertDil2 = mastvertDil2 + 1;
+            if (score_dealer === 'clubs' || score_dealer === 'spades')
+                mastvertDil4 = mastvertDil4 + 1;
 
         }
-        if (mastvertDil2 == 4) { ctx.reply('Нет 4 чёрных дилера (вертикаль)') }
+        if (mastvertDil4 == 4) { ctx.reply('Нет 4 красных дилера (вертикаль)') }
 
 
 
